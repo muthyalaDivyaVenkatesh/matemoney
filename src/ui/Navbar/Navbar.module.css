@@ -1,0 +1,39 @@
+.NavbarContainer {
+    width:'100%';
+    height:15vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around
+}
+
+.NavLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    color: '#d10a10';
+}
+
+.NavLink {
+    margin-left: 40px;
+    color: #d10a10;
+    width: 150px;
+}
+
+.ProfilePhoto {
+    width: 100px;
+    height: 100px;
+    border-radius: '50%';
+    border-color: #d10a10;
+}
+
+.NavLink:hover{
+    background-color: #d10a10;
+    color: white;
+} 
+
+.ActiveClass {
+    background-color: #d10a10;
+}

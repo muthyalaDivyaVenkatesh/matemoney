@@ -1,0 +1,1 @@
+export const RegisterFormHeading = "HI HOW ARE U"

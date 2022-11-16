@@ -1,0 +1,6 @@
+.uploadPhotos {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+}
+

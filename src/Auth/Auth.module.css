@@ -1,0 +1,6 @@
+.authContainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(203, 209, 204);
+}

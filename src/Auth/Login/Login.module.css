@@ -1,0 +1,15 @@
+.loginHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.heading {
+    display: flex;
+    flex-direction: row;
+}
+
+.loginForm{
+    padding-left: 20px;
+}
