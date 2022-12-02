@@ -1,15 +1,17 @@
-function  ProfileCard({ imageUrl, age=21, height=6, religion='hindu', language='Telugu', state="Andhra" }){
+import styles from './profileCard.module.css'
+
+function  ProfileCard(userDetails){
  return(
- <section style={{  height:'22vh', margin: '10px', display: 'flex', flexDirection:'row', background: 'white', borderRadius: '20px', padding:20}}>
-     <img  src={imageUrl} style={{ width: '40%',height: '100%',objectFit: 'contain'}}/>
-     <section style={{display:'flex', gap:'25px', flexDirection:'row', alignItems: 'spaceBetween', flexWrap:'wrap'}}>
-     <span>AGE :{age}</span>
-     <span>HEIGHT:{height}</span>
-     <span>RELIGION:{religion}</span>
-     <span>LANGUAGE:{language}</span>
-     <span>STATE:{state}</span>
-     <span>EDUCATION:{state}</span>
-     <span>JOB:{state}</span>
+ <section className={styles.ProfileCardContainer}>
+     <img  src={userDetails.photoDetails.imageName} style={{ width: '40%',height: '100%',objectFit: 'contain', margin:'auto'}}/>
+     <section className={styles.innerProfileContainer}>
+     <span>SurName:{userDetails?.profileDetails?.surName}</span>  
+     <span>Gotram:{userDetails?.profileDetails?.gotram}</span>    
+     <span>AGE :{userDetails.profileDetails.age}</span>
+     <span>HEIGHT:{userDetails?.profileDetails.height}</span>
+     <span>JOB:{userDetails?.profileDetails?.job}</span>
+     <span>presentCity:{userDetails?.familyDetails?.presentCity}</span>
+     <span>NATIVEPLACE:{userDetails?.familyDetails?.nativePlace}</span>
      </section>
  </section>
 )

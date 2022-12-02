@@ -1,0 +1,25 @@
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 45%;
+    margin-left: 40px;
+}
+
+.cardInner{
+    margin-left: 40;
+    background: rgb(203, 209, 204); 
+    width:100%;
+    justify-content:center;
+    border-radius:20px;
+    text-align:center;
+    cursor:pointer;
+    word-break: break-all;
+}
+
+@media only screen and (max-width: 600px) {
+    .cardContainer{
+        display: flex;
+        flex-basis:100%;
+        margin:10px
+    }
+}

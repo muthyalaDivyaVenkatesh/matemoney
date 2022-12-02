@@ -1,5 +1,5 @@
 .registerContainer {
-    height: 70.5vh;
+    height: 75vh;
     box-shadow: 15px 10px 5px rgb(203, 209, 204);
     width: 80%;
     margin: auto;
@@ -31,4 +31,18 @@
     gap: 20px;
     border-radius: 20px;
     height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+   .Image{
+    display: none
+   }
+   .registerForm{
+    flex-basis: 95%;
+    gap:0px
+   }
+   .registerContent{
+    flex:1
+   }
+
 }

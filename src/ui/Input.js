@@ -1,7 +1,7 @@
 import { Stack, TextField, Autocomplete } from "@mui/material"
 
 
-export function Dropdown({ id,label, value, dropDownvalues,changeHandler,name, style={width:'80%'}, hideLabel=true,  hasError, ...props}){
+export function Dropdown({ id,label, defaultValue, value, dropDownvalues,changeHandler,name, style={width:'80%'}, hideLabel=true,  hasError, ...props}){
     let helperText = `Please select your ${label} `
   return(
     <>
@@ -10,6 +10,7 @@ export function Dropdown({ id,label, value, dropDownvalues,changeHandler,name, s
     name={name}
     select
     style={style}
+    defaultValue={defaultValue}
     value={value}
     onChange={changeHandler}
     SelectProps={{
@@ -31,7 +32,7 @@ export function Dropdown({ id,label, value, dropDownvalues,changeHandler,name, s
 }
 
 
-export  function TextInput({ type='text', inputPropsReadOnly=false , value, label , changeHandler, name='text Input', style, required=false }){
+export  function TextInput({ type='text', inputPropsReadOnly=false , value, label , changeHandler, name='text Input', style,required=false }){
 return(
     <TextField id="standard-basic" label={label} variant="standard" value={value} type={type}   name={name} style={{paddingRight:50,...style}} onChange={changeHandler} required={required}  InputProps={{
         readOnly: inputPropsReadOnly,
@@ -41,18 +42,22 @@ return(
 }
 
 
-export function AutoComplete({ varient ="standard", placeholder, label, renderValues, value}){
+export function AutoComplete({ varient ="standard", required, placeholder, label,name, renderValues, value, changeHandler}){
+  console.log(value,"we are")
   return(
     <Stack spacing={3} sx={{ width: 500 }}>
       <Autocomplete
-        multiple
         id="tags-standard"
+        name={name}
+        onChange={(event, value) => changeHandler(name,value)}
         options={renderValues}
-        getOptionLabel={(option) => option.title}
-        defaultValue={value}
-        renderInput={(params) => (
+        getOptionLabel={(option) => option["title"]? option.title:option}
+        value={value}
+        renderInput={(params,value) => (
           <TextField
+          required={required}
             {...params}
+            value={value}
             variant={varient}
             label={label}
             placeholder={placeholder}

@@ -1,0 +1,17 @@
+.editProfile{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    flex-direction: row;
+    height: 92vh;
+    background: white
+}
+
+
+@media only screen and (max-width: 600px) {
+    .editProfile{
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+}

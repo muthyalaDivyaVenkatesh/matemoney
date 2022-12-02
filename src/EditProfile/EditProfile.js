@@ -2,6 +2,8 @@ import Card from "../ui/card/card"
 import demoImage from '../assets/marry.jpg'
 import editProfile from '../constants/EditProfile'
 import { useNavigate } from "react-router-dom"
+import styles from './EditProfile.module.css'
+
 
 function  EditProfile(){
      let navigate = useNavigate()
@@ -12,8 +14,7 @@ function  EditProfile(){
      }
 
     return(
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap:30, height:'92vh', background:'white'}}>
-        
+        <div className={styles.editProfile}>
          {editProfile.map((value)=>(
             <Card key={value.content}content={value.content} image={value.image} link={value.link} clickHandler={navigateToLink}/>
          ))}

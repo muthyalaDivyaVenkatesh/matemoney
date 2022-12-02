@@ -1,0 +1,25 @@
+.formStyle{
+    margin-top: 50px;
+    margin-left: 50px
+}
+
+.searchValues {
+    display:flex;
+    flex-direction:row;
+    width:50%;
+    height:12vh
+}
+
+@media screen {
+    .formStyle{
+        margin-top: 50px;
+        margin-left: 20px;
+    }
+    .searchValues{
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: 90%;
+        overflow:hidden
+    }
+}

@@ -29,45 +29,31 @@ let ageValues;
     })
 })()
 
-let marriedStatusValues = [{
-    title: 'married'
-},{
-    title:'unMarried'
-}]
-
-let motherToungeValues = [{
-    title: 'telugu'
-}, 
- {
-    title: 'tamil'
- }, 
- {
-    title: 'Hindi'
- },
- {
-    title: 'other'
- }
+let marriedStatusValues = [
+       'married',
+      'unMarried'
 ]
 
-let religionValues = [{
-    title: 'hindu'
-}]
+let motherToungeValues = [
+       'telugu',
+       'tamil',
+       'Hindi',
+       'other',
+ 
+]
 
-let educationValues = [{
-   title: 'B-Tech'
-},{
-   title: 'Degree'
-},{
-   title: 'Pharmcy'
-}, {
-    title: 'Dental'
-}, {
-    title: 'Mbbs'
-}, {
-    title: 'BBA'
-}, {
-    title: 'MBA'
-}]
+let religionValues = [
+       'hindu']
+
+let educationValues = [
+      'B-Tech',
+      'Degree',
+      'Pharmcy',
+       'Dental',
+       'Mbbs',
+       'BBA',
+       'MBA'
+]
 
 
 // serach values
@@ -79,16 +65,13 @@ let searchValues = [
         id: "height", name: "height", label: "height", dropDownValues: heightValues
     },
     {
-        id: 'marriedStatus', placeholder: 'marriedStatus',  label:'mariedStatus', renderValues: marriedStatusValues
+        id: 'marriedStatus', placeholder: 'marriedStatus', name:"marriedStatus", label:'mariedStatus', renderValues: marriedStatusValues
     },
     {
-        id:'motherTongue' , placeholder: 'motherTongue', label:'motherTongue' , renderValues: motherToungeValues 
+        id:'motherTongue' , placeholder: 'motherTongue', name:'motherTongue', label:'motherTongue' , renderValues: motherToungeValues 
     },
     {
-        id:'religion' , placeholder: 'religion', label:'religion' , renderValues: religionValues 
-    },
-    {
-        id:'education', placeholder:'Education' ,label: 'Eductaion' , renderValues: educationValues
+        id:'education', placeholder:'Education' ,label: 'Eductaion', name: 'education', renderValues: educationValues
     }
 
 ]

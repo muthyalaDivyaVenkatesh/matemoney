@@ -1,6 +1,7 @@
 
 .horoscope{
     display: flex;
-    flex-direction: column;
-    flex-basis: 30%;
+    flex-direction: row;
+    flex-wrap:  wrap;
+    width: 60%;
 }

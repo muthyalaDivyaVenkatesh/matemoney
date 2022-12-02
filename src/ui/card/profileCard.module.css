@@ -1,0 +1,32 @@
+.ProfileCardContainer {
+    height: 22vh;
+    margin: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction:row;
+    background: white;
+    border-radius: 20px;
+    padding:20px
+}
+
+.innerProfileContainer{
+    display:flex;
+    gap:25px;
+    flex-direction:row;
+    flex-wrap: wrap;
+    padding:20
+}
+
+@media only screen  and (max-width:632px){
+    .ProfileCardContainer{
+        flex: 1;
+        flex-direction: column;
+        height: fit-content;
+        text-align: center;
+        justify-content: center;
+    }
+    .innerProfileContainer{
+        display: grid;
+        grid-row: auto;
+    }
+}
