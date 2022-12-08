@@ -5,12 +5,15 @@ import { keyForMarried , keyForAutoCompleteDegree, keyForMothertongue } from "..
 
 
 const apiClient = axios.create({
-    baseURL: "http://localhost:8080"
+    // baseURL: "http://localhost:8080",
+    baseURL: "https://matmoney-backend.onrender.com"
 })
 
 apiClient.interceptors.request.use((request) => {
-    console.log(request.url)
-    if(request.url !== '/signin'){
+    console.log(request.url, request.url !== '/login')
+   
+    if( request.url !== '/login' && request.url !== '/signin'){
+        console.log("we are entering into the url")
         const jwt = localStorage.getItem('jwtToken')
         const decoded = jwt_decode(jwt)
         console.log(request.method)
@@ -47,7 +50,7 @@ apiClient.interceptors.response.use((response) => {
 },
     async (error) => {
         console.log(error)
-        return Promise.reject(error.response.data);
+        return Promise.reject(error.response?.data);
     },
 );
 

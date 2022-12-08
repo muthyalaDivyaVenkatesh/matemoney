@@ -7,6 +7,7 @@ import styles from './EditProfile.module.css'
 
 function  EditProfile(){
      let navigate = useNavigate()
+     
     function navigateToLink(profileValue){
         console.log(profileValue)
         navigate(profileValue)

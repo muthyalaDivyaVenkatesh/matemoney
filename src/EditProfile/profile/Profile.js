@@ -15,6 +15,7 @@ import axios from "axios";
 // import formFieldValues from '../../Auth/Register/RegisterFields'
 
 function Profile() {
+    let [zodicDetails,setZodicDetails] = useState({})
     let [profileValues, setprofileValues] = useState({
         name: '',
         marriedStatus:'',
@@ -64,6 +65,11 @@ function Profile() {
                        ...val.data.profile.familyDetails
                    }))
                 }
+             if(val.data.profile?.ZodicDetails){
+                setZodicDetails({
+                    ...val.data.profile.ZodicDetails
+                })
+             }   
     })}, []);
 
     function onChangeHandler(event) {
@@ -144,7 +150,9 @@ function Profile() {
                     <h3>User Details</h3>
                     {newAutoCompleteValues.map((searchValue)=> <AutoComplete  required={true} placeholder={searchValue.placeholder} label={searchValue.label} name={searchValue.name} value={profileValues[searchValue["name"]]} renderValues={searchValue.renderValues} changeHandler={onChangeHandlerAuto}  />)}
                     {profileDetails.map(val => <TextInput {...val} style={{paddingRight:30}} value={profileValues[val.name]} changeHandler={onChangeHandler} />)}
+                    <br/>
                     <Button variant="contained" type="submit" style={{marginTop:20}}> Submit</Button>
+            
                 </form>
 
                 <section className={styles.familyDetails}>
@@ -159,7 +167,7 @@ function Profile() {
                 </section>
             </section>
             <section className={styles.horoscopeContainer}>
-              <Horoscopic />
+              <Horoscopic {...zodicDetails}/>
               <Photos />
             </section>
 

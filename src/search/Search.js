@@ -4,9 +4,12 @@ import { AutoComplete, Dropdown } from "../ui/Input"
 import  CustomButton  from "../ui/CustomButton"
 import styles from './search.module.css'
 import { Users } from "../config/api/api";
+import { useDispatch } from "react-redux";
+import { addPosts } from "../store/profileSlice";
 
 // search
 function Search(){
+    const dispatch = useDispatch()
     let [searchValues,setSearchValues] = useState({
         age: 18,
         toage: 50,
@@ -59,6 +62,7 @@ function Search(){
         console.log("we are inside Submit Handler",searchValues)
         Users.search(searchValues).then((res) =>{
             console.log(res)
+            dispatch(addPosts(res))
             alert('succesfully sent search')
         })
     }

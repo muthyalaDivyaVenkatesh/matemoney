@@ -18,11 +18,6 @@ export let profileDetails = [{
     name: 'complexation'
 },
 {
-
-    label: 'Education',
-    name: 'education'
-},
-{
     label: 'Collage',
     name: 'collage'
 },

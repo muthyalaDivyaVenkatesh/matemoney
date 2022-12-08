@@ -78,8 +78,3 @@ let searchValues = [
 
 export default searchValues;
 
-// { id: "age", name: "toAge", label: "AGE", dropDownValues: ageValues },
-// {
-
-//     id: "height", name: "From Height", label: "HEIGHT", dropDownValues: heightValues
-// }

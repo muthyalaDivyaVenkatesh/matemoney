@@ -11,5 +11,6 @@ export const Users = {
     postImage: (params) => post('/uploadimages',params),
     getImage:(id) => get('/image', {params: {id:id}}),
     search:(params) => post('/search',params),
-    getAllDetails:() => get('/allposts') 
+    getProfiles:() => get('/allposts'),
+    deleteProfile: (id) => destroy('/deleteprofile', {params:{id:id}})
 }

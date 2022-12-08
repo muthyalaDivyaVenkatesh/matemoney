@@ -3,19 +3,29 @@ import SaveIcon from '@mui/icons-material/Save';
 import EditIcon from '@mui/icons-material/Edit';
 import { horoscope } from '../profile/ProfileConstants';
 import { TextInput } from '../../ui/Input';
-import {useState } from 'react'
+import {useEffect, useState } from 'react'
 import { Button } from '@mui/material';
 import { Users } from '../../config/api/api';
 
 
 
-function Horoscopic() {
+function Horoscopic({ birthTime, gotram, star, zodic}) {
+  console.log("WE ARE INSIDE HOROSCOPIC DETAILS", birthTime, gotram,star,zodic)
     const [formValues, setFormValues] = useState({
-       zodic:'',
-       star:'',
-       birthTime: '',
-       gotram:''
+       zodic:  '',
+       star:  '',
+       birthTime:  '',
+       gotram:  ''
     })
+
+    useEffect(() => {
+      setFormValues({
+        zodic,
+        star,
+        birthTime,
+        gotram
+      })
+    }, [birthTime, gotram, star, zodic]);
 
     const [editState,setEditState] = useState({
         familyDetails: false 

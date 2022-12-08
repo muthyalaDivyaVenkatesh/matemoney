@@ -12,10 +12,13 @@ import { get, post } from '../../config/api'
 import validator from 'validator' 
 import { Users } from '../../config/api/api'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { authenticate } from '../../store/profileSlice'
 
 
 function Register(){
   let navigate = useNavigate()
+  const dispatch = useDispatch()
   const [userForm, setFormValues] = useState({
     name:'',
     profileFor:'',
@@ -68,6 +71,7 @@ function Register(){
        setFormValues({...intialState})
        console.log(val,"RESPONSE FROM BACKEND")
       alert("Successfully loggdin",val,val.data.token)
+      // dispatch(authenticate())
       localStorage.setItem('jwtToken', val.data.token)
       navigate('/manage/profile')
      }).catch(err =>{
