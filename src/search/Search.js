@@ -6,10 +6,12 @@ import styles from './search.module.css'
 import { Users } from "../config/api/api";
 import { useDispatch } from "react-redux";
 import { addPosts } from "../store/profileSlice";
+import {useNavigate} from 'react-router-dom'
 
 // search
 function Search(){
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     let [searchValues,setSearchValues] = useState({
         age: 18,
         toage: 50,
@@ -64,6 +66,7 @@ function Search(){
             console.log(res)
             dispatch(addPosts(res))
             alert('succesfully sent search')
+            navigate('/dashboard')
         })
     }
 

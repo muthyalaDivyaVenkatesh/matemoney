@@ -29,6 +29,7 @@ function Login(){
             email:email,
             password:password
         }).then((val)=>{
+            console.log(val.data.token,"LOGGEDING")
             localStorage.setItem('jwtToken', val.data.token)
              alert("Successfully loogedin")
              navigate('/manage')           
