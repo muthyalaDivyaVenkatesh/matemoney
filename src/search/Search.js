@@ -5,7 +5,7 @@ import  CustomButton  from "../ui/CustomButton"
 import styles from './search.module.css'
 import { Users } from "../config/api/api";
 import { useDispatch } from "react-redux";
-import { addPosts } from "../store/profileSlice";
+import { addPosts, searchData } from "../store/profileSlice";
 import {useNavigate} from 'react-router-dom'
 
 // search
@@ -64,7 +64,8 @@ function Search(){
         console.log("we are inside Submit Handler",searchValues)
         Users.search(searchValues).then((res) =>{
             console.log(res)
-            dispatch(addPosts(res))
+            dispatch(addPosts(res.data.Users))
+            dispatch(searchData())
             alert('succesfully sent search')
             navigate('/dashboard')
         })
