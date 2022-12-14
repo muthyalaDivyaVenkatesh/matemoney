@@ -7,18 +7,21 @@ import { addPosts } from "../store/profileSlice";
 
 function Dashboard(){
   const dispatch = useDispatch()
-  const profiles = useSelector((state) => state.profiles)
+  const {profiles,fromSearch} = useSelector((state) => state)
 
    useEffect(() => {
-     Users.getProfiles().then((val) =>{
-      console.log(val,"ll",val.data.posts)
-      dispatch(addPosts(val.data.posts))
-     })
+    if(!fromSearch){
+      Users.getProfiles().then((val) =>{
+        console.log(val,"ll",val.data.posts)
+        dispatch(addPosts(val.data.posts))
+      })
+    }
    }, []);
   
     return(
         <>
-        {profiles?.map(val =>(
+        {!profiles?.length?<p style={{textAlign:'center'}}>NO PROFILES TO SHOW THAT MATCHES YOUR SEARCH</p>:
+        profiles?.map(val =>(
           <ProfileCard imageUrl={profile}  {...val}/>
         ))}
         </>

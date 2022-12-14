@@ -6,12 +6,15 @@ import CustomButton from '../../ui/CustomButton'
 import { colorConstants} from '../../constants/colorConstants'
 import { Users } from '../../config/api/api'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { authenticate } from '../../store/profileSlice'
 
 function Login(){
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
+    
     function passwordHandler(event){
         console.log("we are inside password Handler")
         setPassword(event.target.value)
@@ -32,10 +35,11 @@ function Login(){
             console.log(val.data.token,"LOGGEDING")
             localStorage.setItem('jwtToken', val.data.token)
              alert("Successfully loogedin")
+             dispatch(authenticate())
              navigate('/manage')           
         }).catch(err =>{
             console.log("we are seeing the Error",err)
-            alert("Error Occured while Logging IN")
+            alert(err?.message || "Error Occured While Logging in")
         })
         
     }

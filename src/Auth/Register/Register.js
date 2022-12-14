@@ -73,6 +73,7 @@ function Register(){
       alert("Successfully loggdin",val,val.data.token)
       // dispatch(authenticate())
       localStorage.setItem('jwtToken', val.data.token)
+      dispatch(authenticate())
       navigate('/manage/profile')
      }).catch(err =>{
       console.log("we are seeing the Error",err)

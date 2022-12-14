@@ -4,7 +4,8 @@ import { Users } from "../config/api/api";
 const initialState = {
     profiles: [],
     loading:false,
-    isAuth: false
+    isAuth: false,
+    fromSearch: false
 }
 
 const fetchProfiles = createAsyncThunk(
@@ -20,12 +21,17 @@ const  profileSlice = createSlice({
     initialState,
     reducers: {
         addPosts: (state,action) =>{
-            console.log("wwwwwwwww")
+            console.log("wwwwwwwww",action.payload)
             state.profiles = action.payload
         },
         authenticate: (state,action) =>{
-            console.log("hi")
-            state.isAuth = true
+            const jwt = localStorage.getItem('jwtToken')
+            console.log("iiiiiiiiiiii")
+            console.log(jwt, !!jwt)
+            state.isAuth = !!jwt
+        },
+        searchData : (state,action) =>{
+            state.fromSearch = true
         }
     },
     extraReducers:{
@@ -44,5 +50,5 @@ const  profileSlice = createSlice({
 
 // export const { fetchprofiles } = profileSlice.actions
 
-export const { addPosts, authenticate } = profileSlice.actions
+export const { addPosts, authenticate, searchData } = profileSlice.actions
 export default  profileSlice.reducer

@@ -15,22 +15,26 @@ import UnderDevelopment from './ui/card/underdevelopment/UnderDevelopment';
 import { useDispatch } from 'react-redux';
 import { authenticate } from './store/profileSlice';
 import { useEffect, useState } from 'react'
+import ProtectedRoute from './ProtectedRoute';
+import { useSelector } from 'react-redux';
 
 
 function App() {
   const [isAuth, setisAuth] = useState(false)
+  const dispatch = useDispatch()
+  const showPage = useSelector((state) => state.isAuth)
 
-
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwtToken')
-    console.log(jwt, !!jwt,)
-    if (!!jwt) {
-     console.log("we are inside Jwt")
-      setisAuth(true)
-      console.log(isAuth,"seeing Authentication")
-    }
-  }, []);
-
+  useEffect(()=>{
+    setisAuth(true)
+  },[showPage])
+  
+  useEffect(()=>{
+    // const jwt = localStorage.getItem('jwtToken')
+    dispatch(authenticate())
+    console.log(showPage)
+    setisAuth(showPage)
+    console.log(isAuth)
+  },[])
 
 
   return (
@@ -38,8 +42,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Auth />} />
-          {!isAuth?    <Route index element={<Auth />} /> :(<Route element={<LayoutApp />}>
-            <Route path="/manage" element={<Outlet />} >
+            <Route element={<LayoutApp />}>
+            <Route path="/manage" element={<ProtectedRoute  isAllowed={isAuth}/>} >
               <Route index element={<EditProfile />} />
               <Route path="profile" element={<Profile />} />
               <Route path="horoscope" element={<Horoscopic />} />
@@ -48,14 +52,14 @@ function App() {
               <Route path="profiles_you_viewed" element={<div> <UnderDevelopment /></div>} />
               <Route path="who_viewd_your_profile" element={<div> <UnderDevelopment /></div>} />
             </Route>
-            <Route path="/help" element={<div> <UnderDevelopment /></div>} />
-            <Route path="/notification" element={<div> <UnderDevelopment /></div>} />
-            <Route path="/search" element={< Search />} />
-            <Route path="/dashboard" element={< Dashboard />} />
+            <Route path="/help" element={ <ProtectedRoute isAllowed={isAuth}> <UnderDevelopment /> </ProtectedRoute>}/>
+            <Route path="/notification" element={<ProtectedRoute isAllowed={isAuth}> <UnderDevelopment /> </ProtectedRoute>} />
+            <Route path="/search" element={<ProtectedRoute isAllowed={isAuth}> <Search /> </ProtectedRoute>} />
+            <Route path="/dashboard" element={ <ProtectedRoute isAllowed={isAuth}> <Dashboard /> </ProtectedRoute>}/>
             <Route
               path="*"
               element={<Navigate to="/manage" replace />} />
-          </Route>)}
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
